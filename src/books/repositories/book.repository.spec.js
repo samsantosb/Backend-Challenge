@@ -17,7 +17,7 @@ describe("BookRepository", () => {
             const books = await bookRepository.getAll();
             expect(books).toEqual([]);
         })
-        it("should carrModel.find method", async () => {
+        it("should bookModel.find method", async () => {
             const spy = jest.spyOn(fakeBookModel, 'find');
             await bookRepository.getAll();
             expect(spy).toHaveBeenCalled();

@@ -22,10 +22,17 @@ class BookRepository {
     }
 
     async update(id, book) {
-        const updatedBook = await this.model.findByIdAndUpdate(id, book, { new: true });
+        const updatedBook = await this.model.findByIdAndUpdate(id, {
+            $push: {
+                resume: book.resume,
+                insertedAt: new Date()
+            }
+        }, { new: true });
+
         if (updatedBook === null) {
             return {}
         }
+
         return updatedBook;
     }
 
